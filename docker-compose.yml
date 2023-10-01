@@ -1,0 +1,41 @@
+version: "3.2"
+
+services:
+    frontend:
+        depends_on:
+            - backend
+        build:
+          context: .
+          dockerfile: frontend.Dockerfile
+        volumes:
+            - ./apps/web:/frontend/apps/web
+            - ./packages:/frontend/packages
+        ports:
+          - 3000:3000
+    backend:
+        depends_on:
+            - db
+        build:
+          context: .
+          dockerfile: backend.Dockerfile
+        volumes:
+            - ./apps/api:/backend/apps/api
+            - ./packages:/frontend/packages
+        ports:
+            - 3001:3000
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+    db:
+        image: postgres
+        environment:
+            POSTGRES_USER: ${DB_USER}
+            POSTGRES_PASSWORD: ${DB_PASSWORD}
+            POSTGRES_DB: ${DB_NAME}
+        ports:
+            - 5432:5432
+        volumes:
+            - ./db-data:/var/lib/postgresql/data
+
+volumes:
+  eshop-mvp:
+  node_modules:
