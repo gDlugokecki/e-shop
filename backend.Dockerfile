@@ -11,7 +11,12 @@ COPY ./turbo.json ./
 COPY ./packages ./packages
 COPY ./apps/api/ ./apps/api
 
-
 RUN npx pnpm install
 
+WORKDIR /backend/apps/api/
+RUN npx prisma generate
+
+WORKDIR /backend
+
 CMD ["npx", "pnpm", "turbo", "run", "dev"]
+# CMD ["sleep", "36000"]
