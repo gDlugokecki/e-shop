@@ -10,7 +10,6 @@ COPY ./turbo.json ./
 
 COPY ./packages ./packages
 COPY ./apps/api/ ./apps/api
-COPY ./apps/api/ ./apps/api
 
 
 RUN npx pnpm install
