@@ -1,12 +1,9 @@
-import { trpc } from "@/src/utils/trpc";
+"use client"
+
 import React from "react";
+import { trpc } from "../../utils/trpc";
 
-export default function ProductPage() {
+export default function Page() {
   const products = trpc.product.getProducts.useQuery();
-
-  if (products.isLoading) {
-    return <div>Loading...</div>;
-  }
-
   return <div>{products.data?.map((item) => item.name)}</div>;
 }

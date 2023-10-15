@@ -25,3 +25,19 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.slide {
+  opacity: 0;
+  transition-property: opacity, transform;
+  transition-duration: 0.5s, 0.5s;
+  transition-timing-function: cubic-bezier(1, 0, 1, 0.38),
+    cubic-bezier(0.42, 0.5, 0.58, 1);
+}
+
+.slide.in {
+  opacity: 1;
+  transition-property: opacity, transform;
+  transition-duration: 0.5s, 0.5s;
+  transition-timing-function: cubic-bezier(0, 1, 0, 1),
+    cubic-bezier(0.42, 0.5, 0.58, 1);
+}
