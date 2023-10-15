@@ -39,7 +39,7 @@ const Carousel = ({ slides }: Props) => {
               type="button"
               className={clsx(
                 "mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 opacity-50 transition-opacity duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none",
-                { "opacity-100": current === index }
+                { "!opacity-100": current === index }
               )}
               aria-current="true"
               aria-label={`Slide ${index}`}
